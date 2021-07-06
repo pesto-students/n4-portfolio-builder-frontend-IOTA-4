@@ -1,0 +1,30 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+* {
+  max-height: 1000000px;
+}
+
+body {
+  color: $base-text-color;
+  background: $base-background-color;
+  min-width: $base-min-width;
+}
+
+// adaptive images
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: top;
+}
+
+// google map fix
+.gm-style img {
+  max-width: none;
+}

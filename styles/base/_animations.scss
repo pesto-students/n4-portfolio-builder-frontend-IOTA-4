@@ -1,0 +1,121 @@
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  &.mobile-only-animation {
+    @include media(">desktop") {
+      animation: none !important;
+      -webkit-animation: none !important;
+    }
+  }
+}
+
+.animated.animated-fast {
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+.slideUp {
+  -webkit-animation-name: slideUp;
+  animation-name: slideUp;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes highlight {
+  0% {
+    background-color: rgba(250, 237, 39, 0.46);
+  }
+  // 22% {
+  //   background-color: rgba(yellow, 0.25);
+  // }
+  77% {
+    background-color: rgba(white, 1);
+  }
+  100% {
+    background-color: initial;
+  }
+}
+
+@-webkit-keyframes fullRotation {
+  from {
+    transform: rotateZ(0deg);
+  }
+
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+@keyframes fullRotation {
+  from {
+    transform: rotateZ(0deg);
+  }
+
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+.highlight-effect {
+  animation: highlight 5000ms 1 ease-in-out;
+}
+
+@keyframes fill-progress-bar {
+  0% {
+    width: 10%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes gradient-shimmer {
+  0% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
