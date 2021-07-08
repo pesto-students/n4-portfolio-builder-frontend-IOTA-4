@@ -18,8 +18,8 @@ export const useTheme = () => useContext(ThemeContext)
 
 const ThemeProvider = ({ children }: ThemeProviderProps): JSX.Element => {
   /* 
-    -> [] Set css variables scoped for its children
-    -> [] Allow children to read and set current theme
+    -> [x] Set css variables scoped for its children
+    -> [x] Allow children to read and set current theme
   */
   const [theme, setTheme] = useState(defaultTheme)
 
