@@ -1,10 +1,13 @@
 import type { AppProps } from 'next/app'
 import { ReactElement } from 'react'
+import ThemeProvider from '../hoc/ThemeProvider'
 
 function App({ Component, pageProps }: AppProps): ReactElement {
   return (
     <div>
-      <Component {...pageProps} />
+      <ThemeProvider>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </div>
   )
 }

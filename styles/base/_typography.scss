@@ -2,6 +2,6 @@
 
 body {
   font: #{$font-size-base}/#{$line-height-base} $base-font-family;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
 }
