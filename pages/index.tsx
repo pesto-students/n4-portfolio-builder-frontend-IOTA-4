@@ -4,63 +4,65 @@ import { Collapse } from 'react-collapse'
 
 export default function Home(): ReactElement {
   return (
-    <div className="home">
-      {/* hero section */}
-      <div className="section hero">
-        <div className="container">
-          <div className="hero__content">
-            <div className="hero__title">Online Portfolio Builder</div>
-            <div className="hero__caption h1">
-              Only 2% of portfolio websites make it past the first round. Be in
-              the top 2%
-            </div>
-            <div className="hero__message">
-              Use professional field-tested portfolio templates that follow the
-              exact portfolio rules’ employers look for. Easy to use and done
-              within minutes - try now for free!
-            </div>
-            <button className="btn btn--lg">Create My Portfolio</button>
-            {/* <Image
-              src="/sample-portfolio.jpg"
-              alt="Sample Portfolio"
-              height={350}
-              width={770}
-            /> */}
-            <div className="hero__sample-portfolio">
-              <Image
-                src="/sample-portfolio.png"
-                alt="sample portfolio"
-                objectFit="contain"
-                layout="responsive"
+    <>
+      <div className="home">
+        {/* hero section */}
+        <div className="section hero">
+          <div className="container">
+            <div className="hero__content">
+              <div className="hero__title">Online Portfolio Builder</div>
+              <div className="hero__caption h1">
+                Only 2% of portfolio websites make it past the first round. Be
+                in the top 2%
+              </div>
+              <div className="hero__message">
+                Use professional field-tested portfolio templates that follow
+                the exact portfolio rules’ employers look for. Easy to use and
+                done within minutes - try now for free!
+              </div>
+              <button className="btn btn--lg">Create My Portfolio</button>
+              {/* <Image
+                src="/sample-portfolio.jpg"
+                alt="Sample Portfolio"
+                height={350}
                 width={770}
-                height={500}
-              />
+              /> */}
+              <div className="hero__sample-portfolio">
+                <Image
+                  src="/sample-portfolio.png"
+                  alt="sample portfolio"
+                  objectFit="contain"
+                  layout="responsive"
+                  width={770}
+                  height={500}
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="section features">
-        <div className="container">
-          <h2 className="h1">
-            Effortlessly create a portfolio website for yourself that is as
-            unique and brilliant as you are
-          </h2>
+        <div className="section features">
+          <div className="container">
+            <h2 className="h1">
+              Effortlessly create a portfolio website for yourself that is as
+              unique and brilliant as you are
+            </h2>
 
-          <div className="features__gallery">
-            <div className="features__image">
-              <Image
-                src="/sample-portfolio.png"
-                alt="sample portfolio"
-                objectFit="contain"
-                width={600}
-                height={545}
-              />
+            <div className="features__gallery">
+              <div className="features__image">
+                <Image
+                  src="/sample-portfolio.png"
+                  alt="sample portfolio"
+                  objectFit="contain"
+                  width={600}
+                  height={545}
+                />
+              </div>
+              <FeaturesList />
             </div>
-            <FeaturesList />
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

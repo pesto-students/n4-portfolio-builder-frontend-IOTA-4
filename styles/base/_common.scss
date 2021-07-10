@@ -26,3 +26,8 @@ html {
 .ReactCollapse--collapse {
   transition: height 500ms;
 }
+
+a {
+  color: var(--accent-color-dark);
+  text-decoration: none;
+}
