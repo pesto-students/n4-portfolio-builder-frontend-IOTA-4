@@ -3,11 +3,17 @@ import Device from '../../helpers/Device'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faPassport, faUser } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
+import { useTheme } from '../../hoc/ThemeProvider'
 
 const Navbar = (): JSX.Element => {
   const [navbarOpen, setNavbarOpen] = useState(false)
+  const { theme, setTheme } = useTheme()!
   const toggleNavbarOpen = () => {
     setNavbarOpen(!navbarOpen)
+  }
+  const toggleDarkMode = () => {
+    if (theme == 'dark') setTheme('light')
+    if (theme == 'light') setTheme('dark')
   }
 
   useEffect(() => {
@@ -59,6 +65,17 @@ const Navbar = (): JSX.Element => {
                             Login
                           </a>
                         </Link>
+                      </li>
+                      <li className="navbar-menu__list-item">
+                        <label htmlFor="toggle-dark-mode">
+                          <input
+                            type="checkbox"
+                            name="toggle-dark-mode"
+                            id="toggle-dark-mode"
+                            onChange={toggleDarkMode}
+                          />
+                          Dark Mode
+                        </label>
                       </li>
                     </ul>
                   </div>

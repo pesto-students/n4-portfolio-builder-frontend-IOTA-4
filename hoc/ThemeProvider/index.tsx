@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from 'react'
 
-const defaultTheme = 'light'
+const defaultTheme = 'dark'
 
 type validThemeNames = 'light' | 'dark'
 
