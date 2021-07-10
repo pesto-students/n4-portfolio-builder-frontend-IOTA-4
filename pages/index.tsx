@@ -92,7 +92,7 @@ const FeaturesList = () => {
     },
   ]
   const [currentActiveFeature, setCurrentActiveFeature] = useState<number>(-1)
-  const [timerId, setTimerId]: any = useState()
+  const [timerId, setTimerId] = useState<NodeJS.Timer | undefined>()
   const updateCurrentActiveFeature = (index: number) => {
     setCurrentActiveFeature(index)
   }
