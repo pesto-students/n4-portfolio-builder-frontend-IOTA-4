@@ -1,17 +1,29 @@
 .btn {
-  box-shadow: 0 0 #0000, 0 0 #0000, 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 #0000, 0 0 #0000, 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06);
   background-color: var(--btn-bg);
   color: var(--btn-color);
   font-weight: 600;
-  font-size: 14px;
   border-radius: 6px;
   padding: 8px 16px;
   display: inline-block;
   text-align: center;
   transition: 0.1s background-color linear;
+  outline: none;
+  border: none;
 
   &:hover {
     cursor: pointer;
     background-color: var(--btn-hovered-bg);
+  }
+
+  &--lg {
+    font-size: 16px;
+    padding: 16px 24px;
+
+    @include media('>=desktop') {
+      font-size: 20px;
+      padding: 20px 30px;
+    }
   }
 }

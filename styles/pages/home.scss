@@ -1,0 +1,144 @@
+@import '../globals.scss';
+
+.home {
+  .h1 {
+    max-width: 770px;
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+
+.hero {
+  background-color: var(--bg-dark);
+  text-align: center;
+  color: var(--font-color);
+
+  .container {
+    max-width: 770px;
+  }
+
+  &__content {
+    @extend %flexColumnVCenterHCenter;
+  }
+
+  &__title {
+    color: var(--accent-color-dark);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  &__caption {
+    margin-bottom: 12px;
+  }
+
+  &__message {
+    line-height: 20px;
+    margin-bottom: 24px;
+    text-align: center;
+
+    @include media('>=desktop') {
+      font-size: 18px;
+      line-height: 28px;
+    }
+  }
+
+  &__sample-portfolio {
+    margin-top: 26px;
+    // height: 350px;
+    width: 100%;
+    position: relative;
+  }
+}
+
+.features {
+  background-color: var(--bg-light);
+
+  .h1 {
+    margin-bottom: 40px;
+  }
+
+  &__gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include media('>=desktop') {
+      flex-flow: row nowrap;
+      align-items: flex-start;
+    }
+  }
+
+  &__image {
+    overflow: hidden;
+    margin-right: 30px;
+
+    @include media('<desktop') {
+      margin-bottom: 20px;
+    }
+
+    @include media('>=desktop') {
+      flex: 0 0 600px;
+    }
+    img {
+      border-radius: 4px;
+    }
+  }
+
+  &__list-item {
+    margin-bottom: 20px;
+    position: relative;
+    padding: 12px 12px 12px 27px;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+
+    &--active {
+      background-color: var(--bg-dark);
+
+      .features {
+        &__list-item-progress-bar {
+          height: 100%;
+        }
+
+        &__list-item-message {
+          height: unset;
+        }
+      }
+    }
+  }
+
+  &__list-item-progress-container {
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 8px;
+    width: 3px;
+    border-radius: 6px;
+    background-color: var(--accent-color-light);
+    overflow: hidden;
+  }
+
+  &__list-item-progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    background-color: var(--accent-color-dark);
+  }
+
+  &__list-item-title {
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 600;
+  }
+
+  &__list-item-message {
+    line-height: 1.54;
+    height: 0;
+    transition: 0.2s height;
+    overflow: hidden;
+  }
+}

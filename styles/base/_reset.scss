@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  color: $base-text-color;
+  color: var(--font-color);
   background: $base-background-color;
   min-width: $base-min-width;
 }

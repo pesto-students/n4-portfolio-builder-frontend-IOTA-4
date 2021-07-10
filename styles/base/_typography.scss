@@ -4,4 +4,17 @@ body {
   font: #{$font-size-base}/#{$line-height-base} $base-font-family;
   -webkit-font-smoothing: auto;
   -moz-osx-font-smoothing: auto;
+  font-size: 14px;
+}
+
+h1,
+.h1 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 34px;
+
+  @include media('>=desktop') {
+    font-size: 38px;
+    line-height: 48px;
+  }
 }

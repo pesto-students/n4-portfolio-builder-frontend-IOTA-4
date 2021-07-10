@@ -1,3 +1,5 @@
+@import 'themes';
+
 @import 'vendors/include-media';
 @import 'vendors/normalize';
 
@@ -8,7 +10,5 @@
 @import 'base/common';
 @import 'base/typography';
 @import 'base/reset';
-
-@import 'themes';
 
 @import 'components/button';
