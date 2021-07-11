@@ -6,15 +6,25 @@ import '../styles/pages/home.scss'
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import Navbar from '../components/Navbar'
+import { useRouter } from 'next/dist/client/router'
+import AuthFlowLayout from '../hoc/layouts/AuthFlowLayout'
 config.autoAddCss = false
 
 function App({ Component, pageProps }: AppProps): ReactElement {
+  const router = useRouter()
+  const isAuthFlowRoute = router.route.split('/')[1] == 'users'
+
   return (
     <div>
       <ThemeProvider>
         <>
           <Navbar />
-          <Component {...pageProps} />
+          {isAuthFlowRoute && (
+            <AuthFlowLayout>
+              <Component {...pageProps} />
+            </AuthFlowLayout>
+          )}
+          {!isAuthFlowRoute && <Component {...pageProps} />}
         </>
       </ThemeProvider>
     </div>

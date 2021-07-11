@@ -17,4 +17,8 @@ h1,
     font-size: 38px;
     line-height: 48px;
   }
+
+  &--accented {
+    color: var(--accent-color-dark);
+  }
 }

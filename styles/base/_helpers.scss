@@ -12,6 +12,11 @@
   flex-flow: column nowrap;
   align-items: center;
 }
+%flexColumnHCenter {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
 %flexColumnVCenterHCenter {
   display: flex;
   flex-flow: column nowrap;

@@ -1,7 +1,13 @@
 import Link from 'next/link'
 import Device from '../../helpers/Device'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faPassport, faUser } from '@fortawesome/free-solid-svg-icons'
+import {
+  faBars,
+  faMoon,
+  faPassport,
+  faSun,
+  faUser,
+} from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
 import { useTheme } from '../../hoc/ThemeProvider'
 
@@ -54,7 +60,7 @@ const Navbar = (): JSX.Element => {
                         </Link>
                       </li>
                       <li className="navbar-menu__list-item">
-                        <Link href="/" passHref>
+                        <Link href="/users/login" passHref>
                           <a>
                             {isMobile && (
                               <FontAwesomeIcon
@@ -67,14 +73,26 @@ const Navbar = (): JSX.Element => {
                         </Link>
                       </li>
                       <li className="navbar-menu__list-item">
-                        <label htmlFor="toggle-dark-mode">
+                        <label
+                          htmlFor="toggle-dark-mode"
+                          title="Toggle Dark Mode"
+                        >
                           <input
                             type="checkbox"
                             name="toggle-dark-mode"
                             id="toggle-dark-mode"
                             onChange={toggleDarkMode}
+                            checked={theme == 'dark'}
+                            className="hidden"
                           />
-                          Dark Mode
+                          <FontAwesomeIcon
+                            icon={theme == 'dark' ? faMoon : faSun}
+                            style={{
+                              color: theme == 'dark' ? 'grey' : '#ff5e00',
+                            }}
+                            className="navbar-menu__list-item-icon navbar-menu__list-item-icon--theme"
+                          />
+                          {isMobile && <>Toggle Dark Mode</>}
                         </label>
                       </li>
                     </ul>

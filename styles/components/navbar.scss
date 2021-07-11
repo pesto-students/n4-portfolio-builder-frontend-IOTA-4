@@ -37,9 +37,7 @@
   }
   &__list {
     @extend %flexColumnVCenterHCenter;
-    margin: 0;
-    list-style: none;
-    padding: 0;
+    @extend %listreset;
 
     @include media('<desktop') {
       background-color: var(--bg-light);
@@ -54,6 +52,9 @@
 
   &__list-item {
     color: var(--font-color);
+    &:hover {
+      cursor: pointer;
+    }
     a {
       color: var(--font-color);
     }
