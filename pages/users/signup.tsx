@@ -9,7 +9,7 @@ const Login = () => {
     <div className="auth-form">
       <div className="auth-form__title h1 h1--accented">Sign Up</div>
       <div className="auth-form__caption">
-        Let's get your new account set up!
+        Let&apos;s get your new account set up!
       </div>
       <div className="auth-form__options">
         <LoginOptions />
@@ -25,13 +25,10 @@ const Login = () => {
 }
 
 const LoginOptions = () => {
-  const responseFacebook = (response: any) => {
+  const responseFacebook = (response: unknown) => {
     console.log(response)
   }
-  const responseGoogle = (response: any) => {
-    console.log(response)
-  }
-  const responseLinkedIn = (response: any) => {
+  const responseGoogle = (response: unknown) => {
     console.log(response)
   }
 

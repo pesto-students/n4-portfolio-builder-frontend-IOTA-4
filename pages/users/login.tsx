@@ -23,16 +23,12 @@ const Login = () => {
 }
 
 const LoginOptions = () => {
-  const responseFacebook = (response: any) => {
+  const responseFacebook = (response: unknown) => {
     console.log(response)
   }
-  const responseGoogle = (response: any) => {
+  const responseGoogle = (response: unknown) => {
     console.log(response)
   }
-  const responseLinkedIn = (response: any) => {
-    console.log(response)
-  }
-
   return (
     <>
       <div className="login-options">
