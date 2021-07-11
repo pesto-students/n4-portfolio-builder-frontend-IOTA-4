@@ -3,11 +3,13 @@ import { ReactElement } from 'react'
 import ThemeProvider from '../hoc/ThemeProvider'
 import '../styles/globals.scss'
 import '../styles/pages/home.scss'
+import 'react-tippy/dist/tippy.css'
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import Navbar from '../components/Navbar'
 import { useRouter } from 'next/dist/client/router'
 import AuthFlowLayout from '../hoc/layouts/AuthFlowLayout'
+
 config.autoAddCss = false
 
 function App({ Component, pageProps }: AppProps): ReactElement {

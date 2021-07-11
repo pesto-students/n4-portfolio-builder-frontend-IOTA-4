@@ -5,7 +5,7 @@ const defaultTheme = 'dark'
 type validThemeNames = 'light' | 'dark'
 
 type ThemeContextType = {
-  theme: string
+  theme: validThemeNames
   setTheme: (value: validThemeNames) => void
 }
 type ThemeProviderProps = {
@@ -21,7 +21,7 @@ const ThemeProvider = ({ children }: ThemeProviderProps): JSX.Element => {
     -> [x] Set css variables scoped for its children
     -> [x] Allow children to read and set current theme
   */
-  const [theme, setTheme] = useState(defaultTheme)
+  const [theme, setTheme] = useState<validThemeNames>(defaultTheme)
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>

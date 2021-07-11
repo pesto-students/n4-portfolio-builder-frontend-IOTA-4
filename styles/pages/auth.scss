@@ -29,6 +29,10 @@
       margin-bottom: 12px;
     }
 
+    &__options {
+      // overflow: hidden;
+    }
+
     &__subtext {
       color: var(--muted-text);
     }
@@ -40,6 +44,7 @@
   grid-template-columns: repeat(12, 1fr);
   gap: 14px;
   margin: 10px 0;
+  height: max-content;
 
   @include media('>=desktop') {
     width: 350px;
@@ -88,6 +93,62 @@
           }
         }
       }
+    }
+  }
+}
+
+.login-wrap {
+  display: flex;
+  flex-flow: row nowrap;
+  transition: 0.2s transform ease-in-out;
+  & > div {
+    flex: 0 0 100%;
+  }
+  &--active-loginViaEmail {
+    transform: translateX(-100%);
+    .login-form {
+      height: 192px;
+    }
+    .login-options {
+      height: 0;
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  &--active-loginOptions {
+    .login-options {
+      height: 114px;
+    }
+    .login-form {
+      height: 0;
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
+
+.login-form,
+.login-options {
+  transition: 0.2s height;
+}
+
+.login-form {
+  flex: 0 0 100%;
+
+  &__actions {
+    margin-bottom: 12px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-end;
+
+    a {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .btn {
+      margin-left: 20px;
     }
   }
 }
