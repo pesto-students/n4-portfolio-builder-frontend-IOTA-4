@@ -11,11 +11,15 @@
 
   .auth-form {
     @extend %flexColumnHCenter;
-    margin: auto 0;
-    width: 500px;
     padding: 30px 20px;
     border-radius: 8px;
     background-color: rgba(var(--bg-light-rgb), 0.8);
+    margin-top: 20px;
+
+    @include media('>=desktop') {
+      margin: auto 0;
+      width: 500px;
+    }
 
     &__title {
       margin-bottom: 12px;
@@ -35,8 +39,11 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 14px;
-  width: 350px;
   margin: 10px 0;
+
+  @include media('>=desktop') {
+    width: 350px;
+  }
   &__option {
     grid-column: span 6;
 
