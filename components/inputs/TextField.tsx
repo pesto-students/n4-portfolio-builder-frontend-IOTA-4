@@ -12,16 +12,16 @@ const TextField = ({
   className,
   disabled,
   inputAppendText,
-  meta: { error, touched, dirtySinceLastSubmit },
+  meta: { error, touched },
   errorHandlerErrors,
 }: FieldRenderProps<string, HTMLElement>): JSX.Element => {
   const [visible, setVisibility] = useState<boolean>(false)
   const [isFocused, setIsFocused] = useState<boolean>(false)
   const { theme } = useTheme()!
 
-  const showError =
-    (touched && error?.length > 0) ||
-    (errorHandlerErrors?.[input.name] && !dirtySinceLastSubmit)
+  const showError = touched && error?.length > 0
+  //  ||
+  // (errorHandlerErrors?.[input.name] && !dirtySinceLastSubmit)
   const handleFocus = () => {
     setIsFocused(true)
   }
@@ -38,6 +38,7 @@ const TextField = ({
   return (
     <Tooltip
       // position="left"
+      // disabled={showError}
       open={showError}
       size="small"
       arrow

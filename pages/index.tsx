@@ -156,3 +156,7 @@ const FeaturesList = () => {
     </>
   )
 }
+
+export async function getServerSideProps() {
+  return { props: {} }
+}
