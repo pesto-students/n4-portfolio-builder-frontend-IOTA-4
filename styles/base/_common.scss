@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+
+  @include media('<desktop') {
+    padding: 0 15px;
+  }
+}
+
+.section {
+  padding-top: 32px;
+
+  @include media('>=desktop') {
+    padding-top: 64px;
+  }
+}
+
+.ReactCollapse--collapse {
+  transition: height 500ms;
+}
+
+a {
+  color: var(--accent-color-dark);
+  text-decoration: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.tippy-tooltip {
+  padding: 0 !important;
+}

@@ -1,7 +1,35 @@
-import '../styles/globals.css'
 import type { AppProps } from 'next/app'
+import { ReactElement } from 'react'
+import ThemeProvider from '../hoc/ThemeProvider'
+import '../styles/globals.scss'
+import '../styles/pages/home.scss'
+import 'react-tippy/dist/tippy.css'
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+import Navbar from '../components/Navbar'
+import { useRouter } from 'next/dist/client/router'
+import AuthFlowLayout from '../hoc/layouts/AuthFlowLayout'
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+config.autoAddCss = false
+
+function App({ Component, pageProps }: AppProps): ReactElement {
+  const router = useRouter()
+  const isAuthFlowRoute = router.route.split('/')[1] == 'users'
+
+  return (
+    <div>
+      <ThemeProvider>
+        <>
+          <Navbar />
+          {isAuthFlowRoute && (
+            <AuthFlowLayout>
+              <Component {...pageProps} />
+            </AuthFlowLayout>
+          )}
+          {!isAuthFlowRoute && <Component {...pageProps} />}
+        </>
+      </ThemeProvider>
+    </div>
+  )
 }
-export default MyApp
+export default App

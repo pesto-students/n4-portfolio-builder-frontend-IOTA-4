@@ -1,0 +1,4 @@
+@function toRGB($color) {
+  @return 'rgb(' + red($color) + ', ' + green($color) + ', ' + blue($color) +
+    ')';
+}

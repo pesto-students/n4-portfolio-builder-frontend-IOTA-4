@@ -1,0 +1,30 @@
+%flexRowVCenterHCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+%flexRowVCenter {
+  display: flex;
+  align-items: center;
+}
+%flexColumnVCenter {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+%flexColumnHCenter {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+%flexColumnVCenterHCenter {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+%listreset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

@@ -1,0 +1,36 @@
+.__themed-light__ {
+  --bg-light: #fff;
+  --bg-light-rgb: 255, 255, 255;
+  --bg-dark: #f2f5fa;
+  --bg-dark-rgb: 242, 245, 250;
+  --font-color: #262b33;
+  --btn-bg: #4f46e5;
+  --btn-hovered-bg: #4338ca;
+  --btn-color: #fff;
+  --accent-color-light: #eaecf8;
+  --accent-color-dark: #363e96;
+  --border-color: #f2f5fa;
+  --muted-text: #a5a4a4;
+  --error-color: #c83b50;
+}
+
+.__themed-dark__ {
+  --bg-light: #1a1a1b;
+  --bg-light-rgb: 26, 26, 27;
+  --bg-dark: #030303;
+  --bg-dark-rgb: 3, 3, 3;
+  --font-color: #fff;
+  --btn-bg: #4f46e5;
+  --btn-hovered-bg: #4338ca;
+  --btn-color: #fff;
+  --accent-color-light: #eaecf8;
+  --accent-color-dark: #4f46e5;
+  --border-color: #f2f5fa;
+  --muted-text: #a5a4a4;
+  --error-color: #c83b50;
+}
+
+[class^='__themed-'] {
+  color: var(--font-color);
+  background-color: var(--bg-dark);
+}
