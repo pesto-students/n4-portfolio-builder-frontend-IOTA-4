@@ -1,6 +1,7 @@
 import { ReactElement, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { Collapse } from 'react-collapse'
+import { websiteConstants } from '../constants/websiteConstants'
 
 export default function Home(): ReactElement {
   return (
@@ -10,7 +11,7 @@ export default function Home(): ReactElement {
         <div className="section hero">
           <div className="container">
             <div className="hero__content">
-              <div className="hero__title">Online Portfolio Builder</div>
+              <div className="hero__title">{websiteConstants.websiteTitle}</div>
               <div className="hero__caption h1">
                 Only 2% of portfolio websites make it past the first round. Be
                 in the top 2%

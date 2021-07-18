@@ -9,7 +9,7 @@ import {
   faUser,
 } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
-import { useTheme } from '../../hoc/ThemeProvider'
+import { themes, useTheme } from '../../hoc/ThemeProvider'
 
 const Navbar = (): JSX.Element => {
   const [navbarOpen, setNavbarOpen] = useState(false)
@@ -18,8 +18,8 @@ const Navbar = (): JSX.Element => {
     setNavbarOpen(!navbarOpen)
   }
   const toggleDarkMode = () => {
-    if (theme == 'dark') setTheme('light')
-    if (theme == 'light') setTheme('dark')
+    if (theme == themes.dark) setTheme(themes.light)
+    if (theme == themes.light) setTheme(themes.dark)
   }
 
   useEffect(() => {
@@ -82,13 +82,13 @@ const Navbar = (): JSX.Element => {
                             name="toggle-dark-mode"
                             id="toggle-dark-mode"
                             onChange={toggleDarkMode}
-                            checked={theme == 'dark'}
+                            checked={theme == themes.dark}
                             className="hidden"
                           />
                           <FontAwesomeIcon
-                            icon={theme == 'dark' ? faMoon : faSun}
+                            icon={theme == themes.dark ? faMoon : faSun}
                             style={{
-                              color: theme == 'dark' ? 'grey' : '#ff5e00',
+                              color: theme == themes.dark ? 'grey' : '#ff5e00',
                             }}
                             className="navbar-menu__list-item-icon navbar-menu__list-item-icon--theme"
                           />
