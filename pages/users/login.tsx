@@ -11,13 +11,40 @@ import {
   presence,
   validEmailValidation,
 } from '../../helpers/validationHelpers'
+import { signIn, useSession } from 'next-auth/client'
+import { useRouter } from 'next/dist/client/router'
 
-const Login = () => {
+const Login = ({}) => {
+  const [session] = useSession()
+  const [, setLoading] = useState(false)
+  //redirect to home page
+  if (session && session.user) {
+    console.log('print session info', session)
+  } // Anamay define your route here where you want to redirect user after login
+
+  function handleGoogleSIgnIn() {
+    setLoading(true)
+    signIn('google')
+  }
+
   return (
     <div className="auth-form">
       <div className="auth-form__title h1 h1--accented">Login</div>
       <div className="auth-form__caption">We are happy to see you back!</div>
       <div className="auth-form__options">
+        <div
+          onClick={handleGoogleSIgnIn}
+          className="bg-[#DE5246] px-8 py-2 rounded-md flex items-center space-x-5 w-full cursor-pointer"
+        >
+          <img
+            loading="lazy"
+            className="w-8 h-8"
+            src="https://img.icons8.com/ios-filled/150/ffffff/gmail-new.png"
+          />
+          <h1 className="text-white text-sm lg:text-base font-semibold">
+            Continue with Google
+          </h1>
+        </div>
         <LoginOptions />
       </div>
       <div className="auth-form__subtext">
@@ -57,7 +84,7 @@ const LoginOptions = () => {
           </div>
           <div className="login-options__option">
             <GoogleLogin
-              clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+              clientId="313799699218-vk96os8t5e4odds9tcehjamskjir942r.apps.googleusercontent.com"
               onSuccess={responseGoogle}
               onFailure={responseGoogle}
               className="btn btn--google"

@@ -9,6 +9,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 import Navbar from '../components/Navbar'
 import { useRouter } from 'next/dist/client/router'
 import AuthFlowLayout from '../hoc/layouts/AuthFlowLayout'
+import { Provider } from 'next-auth/client'
 
 config.autoAddCss = false
 
@@ -18,6 +19,7 @@ function App({ Component, pageProps }: AppProps): ReactElement {
 
   return (
     <div>
+      <Provider session={pageProps.session}>
       <ThemeProvider>
         <>
           <Navbar />
@@ -29,6 +31,7 @@ function App({ Component, pageProps }: AppProps): ReactElement {
           {!isAuthFlowRoute && <Component {...pageProps} />}
         </>
       </ThemeProvider>
+      </Provider>
     </div>
   )
 }
