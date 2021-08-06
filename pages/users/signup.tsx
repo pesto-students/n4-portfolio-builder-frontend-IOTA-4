@@ -37,7 +37,7 @@ const LoginOptions = () => {
       <div className="login-options">
         <div className="login-options__option">
           <FacebookLogin
-            appId="1088597931155576"
+            appId=""
             autoLoad={true}
             fields="name,email,picture"
             callback={responseFacebook}
@@ -49,7 +49,7 @@ const LoginOptions = () => {
         </div>
         <div className="login-options__option">
           <GoogleLogin
-            clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+            clientId=""
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
             className="btn btn--google"

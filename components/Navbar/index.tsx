@@ -10,10 +10,12 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
 import { themes, useTheme } from '../../hoc/ThemeProvider'
+import { useSession, signOut } from 'next-auth/client'
 
 const Navbar = (): JSX.Element => {
   const [navbarOpen, setNavbarOpen] = useState(false)
   const { theme, setTheme } = useTheme()!
+  const [session] = useSession()
   const toggleNavbarOpen = () => {
     setNavbarOpen(!navbarOpen)
   }
@@ -59,19 +61,51 @@ const Navbar = (): JSX.Element => {
                           </a>
                         </Link>
                       </li>
-                      <li className="navbar-menu__list-item">
-                        <Link href="/users/login" passHref>
-                          <a>
-                            {isMobile && (
-                              <FontAwesomeIcon
-                                className="navbar-menu__list-item-icon"
-                                icon={faUser}
-                              />
-                            )}
-                            Login
-                          </a>
-                        </Link>
-                      </li>
+                      {!!!session?.user && (
+                        <li className="navbar-menu__list-item">
+                          <Link href="/users/login" passHref>
+                            <a>
+                              {isMobile && (
+                                <FontAwesomeIcon
+                                  className="navbar-menu__list-item-icon"
+                                  icon={faUser}
+                                />
+                              )}
+                              Login
+                            </a>
+                          </Link>
+                        </li>
+                      )}
+                      {!!session?.user && (
+                        <>
+                          <li className="navbar-menu__list-item">
+                            <a>
+                              {isMobile && (
+                                <FontAwesomeIcon
+                                  className="navbar-menu__list-item-icon"
+                                  icon={faUser}
+                                />
+                              )}
+                              Welcome, {session?.user.name}
+                            </a>
+                          </li>
+                          <li className="navbar-menu__list-item">
+                            <a
+                              onClick={() => {
+                                signOut()
+                              }}
+                            >
+                              {isMobile && (
+                                <FontAwesomeIcon
+                                  className="navbar-menu__list-item-icon"
+                                  icon={faUser}
+                                />
+                              )}
+                              Logout
+                            </a>
+                          </li>
+                        </>
+                      )}
                       <li className="navbar-menu__list-item">
                         <label
                           htmlFor="toggle-dark-mode"

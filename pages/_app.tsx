@@ -20,17 +20,17 @@ function App({ Component, pageProps }: AppProps): ReactElement {
   return (
     <div>
       <Provider session={pageProps.session}>
-      <ThemeProvider>
-        <>
-          <Navbar />
-          {isAuthFlowRoute && (
-            <AuthFlowLayout>
-              <Component {...pageProps} />
-            </AuthFlowLayout>
-          )}
-          {!isAuthFlowRoute && <Component {...pageProps} />}
-        </>
-      </ThemeProvider>
+        <ThemeProvider>
+          <>
+            <Navbar />
+            {isAuthFlowRoute && (
+              <AuthFlowLayout>
+                <Component {...pageProps} />
+              </AuthFlowLayout>
+            )}
+            {!isAuthFlowRoute && <Component {...pageProps} />}
+          </>
+        </ThemeProvider>
       </Provider>
     </div>
   )

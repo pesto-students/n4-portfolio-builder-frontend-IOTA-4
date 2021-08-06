@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { useState } from 'react'
 import FacebookLogin from 'react-facebook-login'
 import { Field, Form } from 'react-final-form'
-import GoogleLogin from 'react-google-login'
 import TextField from '../../components/inputs/TextField'
 import {
   combineValidations,
@@ -15,58 +14,44 @@ import { signIn, useSession } from 'next-auth/client'
 import { useRouter } from 'next/dist/client/router'
 
 const Login = ({}) => {
-  const [session] = useSession()
-  const [, setLoading] = useState(false)
-  //redirect to home page
-  if (session && session.user) {
-    console.log('print session info', session)
-  } // Anamay define your route here where you want to redirect user after login
+  const [session, loading] = useSession()
+  const router = useRouter()
 
-  function handleGoogleSIgnIn() {
-    setLoading(true)
-    signIn('google')
-  }
-
-  return (
-    <div className="auth-form">
-      <div className="auth-form__title h1 h1--accented">Login</div>
-      <div className="auth-form__caption">We are happy to see you back!</div>
-      <div className="auth-form__options">
-        <div
-          onClick={handleGoogleSIgnIn}
-          className="bg-[#DE5246] px-8 py-2 rounded-md flex items-center space-x-5 w-full cursor-pointer"
-        >
-          <img
-            loading="lazy"
-            className="w-8 h-8"
-            src="https://img.icons8.com/ios-filled/150/ffffff/gmail-new.png"
-          />
-          <h1 className="text-white text-sm lg:text-base font-semibold">
-            Continue with Google
-          </h1>
+  if (!loading && session && session.user) {
+    router.push('/portfolios/select-template')
+    return <></>
+  } else
+    return (
+      <div className="auth-form">
+        <div className="auth-form__title h1 h1--accented">Login</div>
+        <div className="auth-form__caption">We are happy to see you back!</div>
+        <div className="auth-form__options">
+          <LoginOptions />
         </div>
-        <LoginOptions />
+        <div className="auth-form__subtext">
+          I am not registered —{' '}
+          <Link href="/users/signup" passHref>
+            <a>Sign Up</a>
+          </Link>
+        </div>
       </div>
-      <div className="auth-form__subtext">
-        I am not registered —{' '}
-        <Link href="/users/signup" passHref>
-          <a>Sign Up</a>
-        </Link>
-      </div>
-    </div>
-  )
+    )
 }
 
 const LoginOptions = () => {
   type loginForms = 'loginOptions' | 'loginViaEmail'
+  const [, setLoading] = useState(false)
   const [currentActiveForm, setCurrentActiveForm] =
     useState<loginForms>('loginOptions')
   const responseFacebook = (response: unknown) => {
     console.log(response)
   }
-  const responseGoogle = (response: unknown) => {
-    console.log(response)
+
+  function handleGoogleSignIn() {
+    setLoading(true)
+    signIn('google')
   }
+
   return (
     <>
       <div className={`login-wrap login-wrap--active-${currentActiveForm}`}>
@@ -83,14 +68,14 @@ const LoginOptions = () => {
             />
           </div>
           <div className="login-options__option">
-            <GoogleLogin
-              clientId="313799699218-vk96os8t5e4odds9tcehjamskjir942r.apps.googleusercontent.com"
-              onSuccess={responseGoogle}
-              onFailure={responseGoogle}
-              className="btn btn--google"
-              cookiePolicy={'single_host_origin'}
-              buttonText="Google"
-            />
+            <button onClick={handleGoogleSignIn} className="btn btn--google">
+              <img
+                loading="lazy"
+                className="login-google-icon"
+                src="https://img.icons8.com/ios-filled/150/ffffff/gmail-new.png"
+              />
+              Google
+            </button>
           </div>
           <div className="login-options__option">
             <button

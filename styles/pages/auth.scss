@@ -51,6 +51,8 @@
   }
   &__option {
     grid-column: span 6;
+    height: 50px;
+    overflow: hidden;
 
     button {
       @extend %flexRowVCenter;
@@ -76,10 +78,11 @@
           }
         }
         &--google {
-          & > div {
+          & > .login-google-icon {
             position: absolute;
             left: 20px;
             padding: 0 !important;
+            max-height: 20px;
           }
           span {
             font-weight: 600 !important;
