@@ -1,3 +1,4 @@
+import React from 'react'
 import { createContext, useContext, useState } from 'react'
 
 export enum themes {
@@ -32,4 +33,19 @@ const ThemeProvider = ({ children }: ThemeProviderProps): JSX.Element => {
     </ThemeContext.Provider>
   )
 }
+
+export const withTheme = <P extends Record<string, unknown>>(
+  Component: any
+  // not sure how to type this
+): any =>
+  class WithLoading extends React.Component<P> {
+    render() {
+      return (
+        <ThemeProvider>
+          <Component {...(this.props as P)} />
+        </ThemeProvider>
+      )
+    }
+  }
+
 export default ThemeProvider

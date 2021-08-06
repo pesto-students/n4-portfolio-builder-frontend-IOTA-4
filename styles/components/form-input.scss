@@ -17,6 +17,7 @@
   }
   label {
     position: relative;
+    display: block;
     & > div:first-child {
       font-weight: 600;
       font-size: 14px;
@@ -35,6 +36,8 @@
   }
   &--focused {
     border: 3px solid var(--accent-color-dark);
+  }
+  &--has-value {
     label {
       & > div:first-child {
         font-size: 12px;

@@ -14,9 +14,11 @@ const TextField = ({
   inputAppendText,
   meta: { error, touched },
   errorHandlerErrors,
+  outerClassName,
 }: FieldRenderProps<string, HTMLElement>): JSX.Element => {
   const [visible, setVisibility] = useState<boolean>(false)
   const [isFocused, setIsFocused] = useState<boolean>(false)
+  const [hasValue, setHasValue] = useState<boolean>(false)
   const { theme } = useTheme()!
 
   const showError = touched && error?.length > 0
@@ -26,13 +28,22 @@ const TextField = ({
     setIsFocused(true)
   }
   const handleBlur = () => {
-    if (!input.value) {
-      setIsFocused(false)
+    setIsFocused(false)
+  }
+  const handleChange = (value: unknown) => {
+    if (!!value) {
+      setHasValue(true)
+    } else {
+      setHasValue(false)
     }
+
+    input.onChange(value)
   }
   useEffect(() => {
     if (input.value) {
-      setIsFocused(true)
+      setHasValue(true)
+    } else {
+      setHasValue(false)
     }
   }, [input.value])
   return (
@@ -43,6 +54,7 @@ const TextField = ({
       size="small"
       arrow
       theme={theme}
+      className={outerClassName || ''}
       html={
         <div className="error-message">
           {showError &&
@@ -57,7 +69,9 @@ const TextField = ({
       <div
         className={`input-group ${showError ? 'has-errors ' : ''}${
           className || ''
-        }${isFocused ? 'input-group--focused' : ''}`}
+        }${isFocused ? 'input-group--focused' : ''} ${
+          hasValue ? 'input-group--has-value' : ''
+        }`}
       >
         <label className={`${className}__label`} htmlFor={input.name}>
           {labelName && (
@@ -69,6 +83,7 @@ const TextField = ({
           <div className="input-group-row">
             <input
               {...input}
+              onChange={handleChange}
               disabled={disabled}
               id={input.name}
               className={`${input.type}-input ${className}__input ${

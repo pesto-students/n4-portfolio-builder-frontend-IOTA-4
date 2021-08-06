@@ -55,7 +55,7 @@ const LoginOptions = () => {
   return (
     <>
       <div className={`login-wrap login-wrap--active-${currentActiveForm}`}>
-        <div className="login-options">
+        <div className="login-options fluid-grid">
           <div className="login-options__option">
             <FacebookLogin
               appId="1088597931155576"

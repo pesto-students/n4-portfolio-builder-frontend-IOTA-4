@@ -1,0 +1,32 @@
+.half {
+  width: 50vw;
+}
+.user-form {
+  @extend %flexColumnVCenter;
+  width: 100%;
+
+  @include media('>=desktop') {
+    padding: 48px;
+  }
+
+  form {
+    width: 100%;
+
+    .input-group {
+      margin-bottom: 0;
+    }
+  }
+
+  &__title {
+    margin-bottom: 10px;
+  }
+
+  &__section {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  &__section-title {
+    grid-column: span 12;
+  }
+}

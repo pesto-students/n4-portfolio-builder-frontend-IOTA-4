@@ -34,7 +34,7 @@ const LoginOptions = () => {
 
   return (
     <>
-      <div className="login-options">
+      <div className="login-options fluid-grid">
         <div className="login-options__option">
           <FacebookLogin
             appId=""

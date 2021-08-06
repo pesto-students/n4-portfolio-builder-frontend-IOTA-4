@@ -49,7 +49,7 @@ const Navbar = (): JSX.Element => {
                   <div className="navbar-menu">
                     <ul className="navbar-menu__list">
                       <li className="navbar-menu__list-item">
-                        <Link href="/" passHref>
+                        <Link href="/portfolios/select-template" passHref>
                           <a>
                             {isMobile && (
                               <FontAwesomeIcon
