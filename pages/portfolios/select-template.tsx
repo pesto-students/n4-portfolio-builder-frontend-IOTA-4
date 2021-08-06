@@ -7,6 +7,9 @@ import { usePalette } from 'react-palette'
 import { themes, useTheme } from '../../hoc/ThemeProvider'
 import '@egjs/flicking-plugins/dist/arrow.css'
 import templates from '../../templates'
+import { GetServerSideProps } from 'next'
+import { Session } from 'next-auth'
+import { getSession } from 'next-auth/client'
 
 const SelectTemplate = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0)
@@ -108,6 +111,16 @@ const SelectTemplate = () => {
       </div>
     </>
   )
+}
+
+export const getServerSideProps: GetServerSideProps<{
+  session: Session | null
+}> = async (context) => {
+  return {
+    props: {
+      session: await getSession(context),
+    },
+  }
 }
 
 export default SelectTemplate
