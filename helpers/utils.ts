@@ -1,7 +1,8 @@
 const parseResume = (url: string) => {
   const headers = new Headers()
   // headers.append('apikey', 'KsIH0DSK8ME96oTi0Z2RP2q9tC85BA41')
-  headers.append('apikey', 'xRsyPTQ8EymGsxhY93hse0snJ6MNk5HD')
+  // headers.append('apikey', 'xRsyPTQ8EymGsxhY93hse0snJ6MNk5HD')
+  headers.append('apikey', '9hXULnXUUs8niGx8FpnRtjXl6PNiYNH0')
 
   const requestOptions = {
     method: 'GET',
