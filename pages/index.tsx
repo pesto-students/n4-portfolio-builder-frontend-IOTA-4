@@ -2,6 +2,7 @@ import { ReactElement, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { Collapse } from 'react-collapse'
 import { websiteConstants } from '../constants/websiteConstants'
+import Link from 'next/link'
 
 export default function Home(): ReactElement {
   return (
@@ -21,7 +22,9 @@ export default function Home(): ReactElement {
                 the exact portfolio rules’ employers look for. Easy to use and
                 done within minutes - try now for free!
               </div>
-              <button className="btn btn--lg">Create My Portfolio</button>
+              <Link href="/portfolios/select-template" passHref>
+                <a className="btn btn--lg">Create My Portfolio</a>
+              </Link>
               {/* <Image
                 src="/sample-portfolio.jpg"
                 alt="Sample Portfolio"
