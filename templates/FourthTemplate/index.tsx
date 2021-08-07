@@ -1,7 +1,7 @@
 import IndexPage from '../SecondTemplate/SecondTemplate'
 
 const exports = {
-  image: '/portfolios/sample-portfolio-4-min.png',
+  image: '/portfolios/sample-portfolio-4.jpg',
   component: IndexPage,
   key: 'FourthTemplate',
   name: 'Fourth Template',

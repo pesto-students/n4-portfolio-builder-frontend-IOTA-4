@@ -1,7 +1,7 @@
 import FirstTemplate from './FirstTemplate'
 
 const exports = {
-  image: '/portfolios/sample-portfolio-1-min.png',
+  image: '/portfolios/sample-portfolio-1.jpg',
   component: FirstTemplate,
   key: 'FirstTemplate',
   name: 'Second Template',
