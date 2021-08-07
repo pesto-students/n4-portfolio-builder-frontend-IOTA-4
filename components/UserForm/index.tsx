@@ -4,6 +4,7 @@ import {
   combineValidations,
   presence,
   validEmailValidation,
+  validSlug,
 } from '../../helpers/validationHelpers'
 import TextField from '../inputs/TextField'
 import Modal from 'react-modal'
@@ -14,16 +15,19 @@ import ParsedResume from '../../types/ParsedResume'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 import FileInput from '../inputs/FileInput'
+import { useRouter } from 'next/dist/client/router'
 
 interface propTypes {
   onDataUpdate: (data: ParsedResume) => void
 }
 
 const UserForm = ({}: propTypes) => {
+  const router = useRouter()
   const [uploadModalOpen, setUploadModalOpen] = useState<boolean>(false)
   const [formValues] = useState<Record<string, unknown>>({})
   const [parsedResumeData, setParsedResumeData] =
     useState<ParsedResume | void>()
+  const [resumeUrl, setResumeUrl] = useState('')
   // const [, setResumeUploadData] = useState<any>({
   //   resume: '',
   //   progress: 0,
@@ -42,14 +46,24 @@ const UserForm = ({}: propTypes) => {
   }, [])
 
   useEffect(() => {
-    console.log('somehitng changed', formValues)
+    console.log('something changed', formValues)
   }, [formValues])
 
-  const handleSubmit = (values: unknown) => {
-    console.log(values)
+  const readParsedResumeFromLocalStorage = () => {
+    const existingParsedResume = localStorage.getItem('parsedResume')
+    if (existingParsedResume)
+      setParsedResumeData(JSON.parse(existingParsedResume))
   }
 
-  const handleUpload = async (files: FileList) => {
+  const handleSubmit = (values: Record<string, unknown>) => {
+    localStorage.setItem(
+      'inputResume',
+      JSON.stringify(formDataToApiResponseFormat(values))
+    )
+    router.push(`/${values.portfolioUrlSlug}`)
+  }
+
+  const handleUpload = async (files: File[]) => {
     const body = new FormData()
     body.append('file', files[0])
     fetch('/api/file', {
@@ -59,10 +73,21 @@ const UserForm = ({}: propTypes) => {
       .then((response) => response.json())
       .then((data) => {
         const { fileUrl } = data
-        parseResume(fileUrl).then((response) => {
-          console.log('response', response)
+        setResumeUrl(fileUrl)
+        parseResume(fileUrl).then(() => {
+          setUploadModalOpen(false)
+          readParsedResumeFromLocalStorage()
         })
       })
+  }
+
+  const formDataToApiResponseFormat = (values: any) => {
+    return {
+      ...values,
+      name: [values.firstName, values.lastName].join(' '),
+      skills: values.skills.map((skill: { name: string }) => skill.name),
+      resumeUrl,
+    }
   }
 
   return (
@@ -189,6 +214,17 @@ const UserForm = ({}: propTypes) => {
                       validate={(value) =>
                         combineValidations(value, [presence])
                       }
+                    />
+
+                    <Field
+                      name="aboutMe"
+                      labelName="About Me"
+                      component={TextField}
+                      outerClassName="col-100"
+                      validate={(value) =>
+                        combineValidations(value, [presence])
+                      }
+                      type="textarea"
                     />
                   </section>
                   <section className="user-form__section fluid-grid">
@@ -378,7 +414,7 @@ const UserForm = ({}: propTypes) => {
                         component={TextField}
                         outerClassName="col-40"
                         validate={(value) =>
-                          combineValidations(value, [presence])
+                          combineValidations(value, [presence, validSlug])
                         }
                       />
                     </div>

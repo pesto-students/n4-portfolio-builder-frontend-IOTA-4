@@ -4,6 +4,7 @@
 .user-form {
   @extend %flexColumnVCenter;
   width: 100%;
+  padding: 16px;
 
   @include media('>=desktop') {
     padding: 48px;
@@ -66,8 +67,11 @@
 
 .create-portfolio {
   max-height: calc(100vh - 65px);
-  overflow: hidden;
   grid-template-rows: 100%;
+  overflow: auto;
+  @include media('>=desktop') {
+    overflow: hidden;
+  }
 
   .col-50 {
     max-height: 100%;

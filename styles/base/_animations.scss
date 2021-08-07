@@ -4,7 +4,7 @@
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
   &.mobile-only-animation {
-    @include media(">desktop") {
+    @include media('>desktop') {
       animation: none !important;
       -webkit-animation: none !important;
     }
@@ -117,5 +117,18 @@
   }
   100% {
     background-position: 0% 0%;
+  }
+}
+
+.spin {
+  animation: spin 1000ms infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

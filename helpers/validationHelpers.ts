@@ -31,6 +31,26 @@ export const firstAndLastNameValidation = (value: unknown): errorMessage => {
     return 'must contain first and last name'
 }
 
+export const validSlug = (value: any): errorMessage => {
+  if (value && typeof value == 'string') {
+    const validSlugRegex = new RegExp('^[a-zA-Z0-9-_]*$')
+    const valueMatchesRegex = value.match(validSlugRegex)
+
+    if (!!!valueMatchesRegex)
+      return 'can only contain alphabets, numbers, dashes (-) and underscores(_)'
+
+    const invalidSequences = ['--', '-_', '_-', '__']
+    const invalidSequenceErrors: string[] = []
+
+    invalidSequences.forEach((sequence) => {
+      if (value.includes(sequence))
+        invalidSequenceErrors.push(`invalid character sequence ${sequence}`)
+    })
+
+    if (invalidSequenceErrors.length > 0) return invalidSequenceErrors[0]
+  }
+}
+
 export const combineValidations = (
   value: unknown,
   validationFns: Array<(value: unknown) => string | void>

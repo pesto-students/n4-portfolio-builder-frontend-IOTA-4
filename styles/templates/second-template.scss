@@ -310,13 +310,13 @@
     color: #4070f4;
   }
 
-  /* My Services CSS */
-  .services .boxes {
+  /* My Experience, Education CSS */
+  .descriptions .boxes {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
   }
-  .services .boxes .box {
+  .descriptions .boxes .box {
     margin: 20px 0;
     width: calc(100% / 3 - 20px);
     text-align: center;
@@ -326,11 +326,11 @@
     cursor: default;
     transition: all 0.4s ease;
   }
-  .services .boxes .box:hover {
+  .descriptions .boxes .box:hover {
     background: #4070f4;
     color: #fff;
   }
-  .services .boxes .box .icon {
+  .descriptions .boxes .box .icon {
     height: 50px;
     width: 50px;
     background: #4070f4;
@@ -346,13 +346,13 @@
     background-color: #fff;
     color: #4070f4;
   }
-  .services .boxes .box:hover .topic,
-  .services .boxes .box:hover p {
+  .descriptions .boxes .box:hover .topic,
+  .descriptions .boxes .box:hover p {
     color: #0e2431;
     transition: all 0.4s ease;
   }
-  .services .boxes .box:hover .topic,
-  .services .boxes .box:hover p {
+  .descriptions .boxes .box:hover .topic,
+  .descriptions .boxes .box:hover p {
     color: #fff;
   }
   /* Contact Me CSS */
@@ -422,7 +422,7 @@
       width: 90%;
       margin: 40px 0;
     }
-    .services .boxes .box {
+    .descriptions .boxes .box {
       margin: 20px 0;
       width: calc(100% / 2 - 20px);
     }
@@ -490,7 +490,7 @@
       align-items: center;
       width: 100%;
     }
-    .services .boxes .box {
+    .descriptions .boxes .box {
       margin: 20px 0;
       width: 100%;
     }

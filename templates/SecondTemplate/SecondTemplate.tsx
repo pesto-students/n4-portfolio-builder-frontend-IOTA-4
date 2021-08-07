@@ -4,8 +4,22 @@ import {
 } from '../../helpers/utils'
 import ParsedResume from '../../types/ParsedResume'
 
-const SecondTemplate = ({ data }: { data: ParsedResume }) => {
-  const { name, experience, address } = data
+interface propType extends ParsedResume {
+  resumeUrl?: string
+  aboutMe?: string
+}
+
+const SecondTemplate = ({ data }: { data: propType }) => {
+  const {
+    name,
+    experience,
+    address,
+    skills,
+    education,
+    email,
+    resumeUrl,
+    aboutMe,
+  } = data
 
   return (
     <div id="second-template">
@@ -32,7 +46,10 @@ const SecondTemplate = ({ data }: { data: ParsedResume }) => {
               <a href="#skills">Skills</a>
             </li>
             <li>
-              <a href="#services">Services</a>
+              <a href="#education">Education</a>
+            </li>
+            <li>
+              <a href="#experiences">Experience</a>
             </li>
             <li>
               <a href="#contact">Contact</a>
@@ -85,27 +102,14 @@ const SecondTemplate = ({ data }: { data: ParsedResume }) => {
           </div>
           <div className="about-details">
             <div className="left">
-              <img src="images/about.jpg" alt="" />
+              <img src="portfolios/secondTemplate/about.jpg" alt="" />
             </div>
             <div className="right">
-              <div className="topic">Designing Is My Passion</div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Deserunt, porro veritatis pariatur, nobis voluptatem ipsum
-                repellat nemo quisquam error reprehenderit recusandae odio vel,
-                suscipit. Voluptas mollitia accusantium quaerat aspernatur
-                labore dolorum placeat ipsa sint nam perspiciatis eos
-                consectetur veritatis debitis, quis aliquam unde sed maiores
-                sit! Hic molestiae optio iste iure earum amet nostrum quaerat
-                facere quae veniam maiores harum iusto aperiam vel inventore
-                illo voluptatibus voluptates quo impedit voluptatum error vitae,
-                omnis praesentium? Aperiam nulla non, nesciunt fuga rem
-                perferendis alias et, temporibus, distinctio culpa unde a
-                laborum libero ducimus. Facilis veniam sit praesentium,
-                voluptatibus sint maxime iusto eaque.
-              </p>
+              <p>{aboutMe}</p>
               <div className="button">
-                <button>Download CV</button>
+                <a href={resumeUrl} target="_blank" rel="noreferrer">
+                  <button>Download my resume</button>
+                </a>
               </div>
             </div>
           </div>
@@ -122,13 +126,6 @@ Section Tag and Other Div will same where we need to put same CSS */}
           <div className="skills-details">
             <div className="text">
               <div className="topic">Skills Reflects Our Knowledge</div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus
-                natus tenetur tempora? Quasi, rem quas omnis. Porro rem
-                aspernatur reiciendis ut praesentium minima ad, quos, officia!
-                Illo libero, et, distinctio repellat sed nesciunt est modi
-                quaerat placeat. Quod molestiae, alias?
-              </p>
               <div className="experience">
                 <div className="num">10</div>
                 <div className="exp">
@@ -137,94 +134,68 @@ Section Tag and Other Div will same where we need to put same CSS */}
               </div>
             </div>
             <div className="boxes">
-              <div className="box">
-                <div className="topic">HTML</div>
-                <div className="per">90%</div>
-              </div>
-              <div className="box">
-                <div className="topic">CSS</div>
-                <div className="per">80%</div>
-              </div>
-              <div className="box">
-                <div className="topic">JavScript</div>
-                <div className="per">70%</div>
-              </div>
-              <div className="box">
-                <div className="topic">PHP</div>
-                <div className="per">60%</div>
-              </div>
+              {skills.map((skill) => {
+                return (
+                  <div className="box" key={skill}>
+                    <div className="topic">{skill}</div>
+                    <div className="per">
+                      {Math.floor(Math.random() * 100)}%
+                    </div>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </div>
       </section>
 
-      {/* My Services Section Start */}
-      <section className="services" id="services">
+      {/* My Education Section Start */}
+      <section className="descriptions" id="education">
         <div className="content">
           <div className="title">
-            <span>My Services</span>
+            <span>My Education</span>
           </div>
           <div className="boxes">
-            <div className="box">
-              <div className="icon">
-                <i className="fas fa-desktop"></i>
-              </div>
-              <div className="topic">Web Devlopment</div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Mollitia autem quam odio, qui voluptatem eligendi?
-              </p>
-            </div>
-            <div className="box">
-              <div className="icon">
-                <i className="fas fa-paint-brush"></i>
-              </div>
-              <div className="topic">Graphic Design</div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Mollitia autem quam odio, qui voluptatem eligendi?
-              </p>
-            </div>
-            <div className="box">
-              <div className="icon">
-                <i className="fas fa-chart-line"></i>
-              </div>
-              <div className="topic">Digital Marketing</div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Mollitia autem quam odio, qui voluptatem eligendi?
-              </p>
-            </div>
-            <div className="box">
-              <div className="icon">
-                <i className="fab fa-android"></i>
-              </div>
-              <div className="topic">Icon Design</div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Mollitia autem quam odio, qui voluptatem eligendi?
-              </p>
-            </div>
-            <div className="box">
-              <div className="icon">
-                <i className="fas fa-camera-retro"></i>
-              </div>
-              <div className="topic">Photography</div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Mollitia autem quam odio, qui voluptatem eligendi?
-              </p>
-            </div>
-            <div className="box">
-              <div className="icon">
-                <i className="fas fa-tablet-alt"></i>
-              </div>
-              <div className="topic">Apps Devlopment</div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Mollitia autem quam odio, qui voluptatem eligendi?
-              </p>
-            </div>
+            {education.map((ed) => {
+              return (
+                <div className="box" key={ed.name}>
+                  <div className="icon">
+                    <i className="fas fa-desktop"></i>
+                  </div>
+                  <div className="topic">{ed.name}</div>
+                  <p>
+                    {ed.date_start || ed.dates?.[0]} -{' '}
+                    {ed.date_end || ed.dates?.reverse()[0]}
+                  </p>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* My Experiences Section Start */}
+      <section className="descriptions" id="experiences">
+        <div className="content">
+          <div className="title">
+            <span>My Experience</span>
+          </div>
+          <div className="boxes">
+            {experience.map((ed) => {
+              return (
+                <div className="box" key={ed.title}>
+                  <div className="icon">
+                    <i className="fas fa-desktop"></i>
+                  </div>
+                  <div className="topic">{ed.title}</div>
+                  <h4>{ed.organization}</h4>
+                  <p>
+                    {ed.date_start || ed.dates?.[0]} -{' '}
+                    {ed.date_end || ed.dates?.reverse()[0]}
+                  </p>
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -236,15 +207,12 @@ Section Tag and Other Div will same where we need to put same CSS */}
             <span>Contact Me</span>
           </div>
           <div className="text">
-            <div className="topic">Have Any Project?</div>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam
-              neque ipsum corrupti dolores, facere numquam voluptate aspernatur
-              sit perferendis qui nisi modi! Recusandae deserunt consequatur
-              voluptatibus alias repellendus nobis eligendi.
-            </p>
+            <div className="topic">Interested in working with me?</div>
+            <p>Please don&apos;t hesitate to reach out to me</p>
             <div className="button">
-              <button>Let&apos;s Chat</button>
+              <a href={`mailto:${email}`}>
+                <button>Let&apos;s Chat</button>
+              </a>
             </div>
           </div>
         </div>
