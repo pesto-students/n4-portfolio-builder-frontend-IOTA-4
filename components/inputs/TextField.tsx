@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { FieldRenderProps } from 'react-final-form'
 import { Tooltip } from 'react-tippy'
+import { formatDate } from '../../helpers/utils'
 import { useTheme } from '../../hoc/ThemeProvider'
 
 const TextField = ({
@@ -83,6 +84,13 @@ const TextField = ({
           <div className="input-group-row">
             <input
               {...input}
+              value={
+                input.type == 'date'
+                  ? input.value
+                    ? formatDate(new Date(input.value))
+                    : ''
+                  : input.value
+              }
               onChange={handleChange}
               disabled={disabled}
               id={input.name}

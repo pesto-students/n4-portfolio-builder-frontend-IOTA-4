@@ -45,8 +45,20 @@ a {
   grid-template-columns: repeat(12, 1fr);
   gap: 14px;
 
+  .col-40 {
+    grid-column: span 5;
+  }
+
   .col-50 {
     grid-column: span 6;
+  }
+
+  .col-60 {
+    grid-column: span 7;
+  }
+
+  .col-100 {
+    grid-column: span 12;
   }
 }
 

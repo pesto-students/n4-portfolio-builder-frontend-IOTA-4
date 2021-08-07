@@ -253,10 +253,7 @@ Section Tag and Other Div will same where we need to put same CSS */}
       {/* Footer Section Start */}
       <footer>
         <div className="text">
-          <span>
-            Created By <a href="#">CodingLab</a> | &#169; 2021 All Rights
-            Reserved
-          </span>
+          <span>&#169; 2021 All Rights Reserved</span>
         </div>
       </footer>
     </div>

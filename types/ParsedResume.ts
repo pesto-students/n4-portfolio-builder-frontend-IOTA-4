@@ -5,7 +5,9 @@ interface ParsedResume {
   address: string
   skills: string[]
   education: {
-    dates: string[]
+    dates?: string[]
+    date_end?: string
+    date_start?: string
     name: string
   }[]
   experience: {
