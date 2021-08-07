@@ -16,17 +16,21 @@ interface propTypes {
     image: string
     name?: string
     price?: string
+    key: string
   }
 }
 
 const TestTemplate = ({
   showDetails,
-  template: { image, name, price },
+  template: { image, name, price, key },
 }: propTypes): JSX.Element => {
   // const { theme } = useTheme()!
   return (
     <Link href="/portfolios/create" passHref>
       <a
+        onClick={() => {
+          localStorage.setItem('selectedTemplate', key)
+        }}
         className={`test-template ${
           showDetails ? '' : 'test-template--fixed'
         } reset-link`}
