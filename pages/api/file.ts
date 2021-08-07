@@ -31,7 +31,7 @@ const saveFile = async (file: any, req: any) => {
   const data = fs.readFileSync(file.path)
   const fileName = `${file.name}`
 
-  fs.writeFileSync(`./public/${fileName}`, data)
+  fs.writeFileSync(`./${fileName}`, data)
   await fs.unlinkSync(file.path)
   return 'https://' + req.headers.host + '/' + fileName
 }
