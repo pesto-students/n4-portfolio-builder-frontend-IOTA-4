@@ -1,5 +1,16 @@
 import formidable from 'formidable'
 import fs from 'fs'
+import Cors from 'cors'
+import initMiddleware from '../../lib/initMiddleware'
+
+// Initialize the cors middleware
+const cors = initMiddleware(
+  // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
+  Cors({
+    // Only allow requests with GET, POST and OPTIONS
+    methods: ['GET', 'POST', 'OPTIONS'],
+  })
+)
 
 export const config = {
   api: {
@@ -24,7 +35,8 @@ const saveFile = async (file: any, req: any) => {
   return 'https://' + req.headers.host + '/' + fileName
 }
 
-export default (req: any, res: any) => {
+export default async (req: any, res: any) => {
+  await cors(req, req)
   req.method === 'POST'
     ? post(req, res)
     : req.method === 'PUT'
