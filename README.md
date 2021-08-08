@@ -1,3 +1,8 @@
+## Portfolio Builder
+
+The purpose of this app is to effortlessly generate a portfolio website by simply uploading resume.
+PROD URL: https://portfolio-builder-6oc2ghy8g-saxenanamay.vercel.app/
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
