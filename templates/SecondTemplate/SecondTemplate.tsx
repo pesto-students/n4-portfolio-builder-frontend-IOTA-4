@@ -102,7 +102,7 @@ const SecondTemplate = ({ data }: { data: propType }) => {
           </div>
           <div className="about-details">
             <div className="left">
-              <img src="portfolios/secondTemplate/about.jpg" alt="" />
+              <img src="/portfolios/secondTemplate/about.jpg" alt="" />
             </div>
             <div className="right">
               <p>{aboutMe}</p>

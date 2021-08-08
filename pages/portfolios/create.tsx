@@ -10,10 +10,10 @@ import ParsedResume from '../../types/ParsedResume'
 const PortfolioCreate = () => {
   const [userData, setUserData] = useState<ParsedResume | void>()
   const router = useRouter()
-  const [session] = useSession()
+  const [session, loading] = useSession()
 
   useEffect(() => {
-    if (!!!session?.user) {
+    if (!loading && !!!session?.user) {
       router.push('/users/login')
     }
   }, [])

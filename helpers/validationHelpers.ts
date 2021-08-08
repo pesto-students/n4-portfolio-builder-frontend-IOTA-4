@@ -15,16 +15,16 @@ export const validEmailValidation = (value: unknown): errorMessage => {
     return 'must be a valid email'
 }
 
-// export const validPhoneValidation = (value: unknown) => {
-//   if (value) {
-//     import('libphonenumber-js').then(({ parsePhoneNumberFromString }) => {
-//       const parsedPhoneNumber = parsePhoneNumberFromString(value)
-//       if (!parsedPhoneNumber?.isPossible() || !parsedPhoneNumber.isValid()) {
-//         return 'must be a valid phone number'
-//       }
-//     })
-//   }
-// }
+export const validPhoneValidation = (value: unknown) => {
+  if (value && typeof value == 'string') {
+    import('libphonenumber-js').then(({ parsePhoneNumberFromString }) => {
+      const parsedPhoneNumber = parsePhoneNumberFromString(value)
+      if (!parsedPhoneNumber?.isPossible() || !parsedPhoneNumber.isValid()) {
+        return 'must be a valid phone number'
+      }
+    })
+  }
+}
 
 export const firstAndLastNameValidation = (value: unknown): errorMessage => {
   if (typeof value == 'string' && value?.split(' ')?.length < 2)

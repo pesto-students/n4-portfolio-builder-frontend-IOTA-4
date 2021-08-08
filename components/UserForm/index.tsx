@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
-import { Field, Form } from 'react-final-form'
+import { Field, Form, FormSpy } from 'react-final-form'
 import {
   combineValidations,
   presence,
   validEmailValidation,
+  validPhoneValidation,
   validSlug,
 } from '../../helpers/validationHelpers'
 import TextField from '../inputs/TextField'
@@ -169,6 +170,11 @@ const UserForm = ({}: propTypes) => {
                     <div className="user-form__section-title h4 h4--accented">
                       Personal Details
                     </div>
+                    <FormSpy
+                      onChange={(...props) => {
+                        console.log('some change', props)
+                      }}
+                    />
                     <Field
                       name="firstName"
                       labelName="First Name"
@@ -208,7 +214,10 @@ const UserForm = ({}: propTypes) => {
                       component={TextField}
                       outerClassName="col-50"
                       validate={(value) =>
-                        combineValidations(value, [presence])
+                        combineValidations(value, [
+                          presence,
+                          validPhoneValidation,
+                        ])
                       }
                     />
 

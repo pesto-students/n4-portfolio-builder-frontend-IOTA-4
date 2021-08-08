@@ -20,6 +20,7 @@
     "final-form-arrays": "^3.0.2",
     "firebase": "^8.9.0",
     "formidable": "^1.2.2",
+    "libphonenumber-js": "^1.9.23",
     "logrocket": "^2.0.0",
     "logrocket-react": "^4.0.1",
     "next": "11.0.1",

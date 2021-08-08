@@ -21,10 +21,10 @@ const SelectTemplate = () => {
   const { data } = usePalette(Object.values(templates)[currentImageIndex].image)
   const [primaryColor, setPrimaryColor] = useState<string>()
 
-  const [session] = useSession()
+  const [session, loading] = useSession()
 
   useEffect(() => {
-    if (!!!session?.user) {
+    if (!loading && !!!session?.user) {
       router.push('/users/login')
     }
   }, [])
