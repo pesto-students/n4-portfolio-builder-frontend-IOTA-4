@@ -79,6 +79,12 @@ const UserForm = ({}: propTypes) => {
           readParsedResumeFromLocalStorage()
         })
       })
+      .catch(() => {
+        parseResume('').then(() => {
+          setUploadModalOpen(false)
+          readParsedResumeFromLocalStorage()
+        })
+      })
   }
 
   const formDataToApiResponseFormat = (values: any) => {
