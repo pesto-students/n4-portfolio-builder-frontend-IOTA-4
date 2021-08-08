@@ -2,19 +2,19 @@ import ParsedResume from '../types/ParsedResume'
 
 const parsedResumeResponses: ParsedResume[] = [
   {
-    address: 'Orlando,\nFL, 32804, United\nStates',
+    address: 'Kota,\nRajasthan, 324006, India',
     education: [
       {
         dates: ['December 2000'],
         name: 'New York University',
       },
     ],
-    email: 'email@example.com',
+    email: 'anamay@example.com',
     experience: [
       {
         dates: ['August 1932'],
         location: 'Orlando',
-        organization: 'Jacky Smith',
+        organization: 'Good Company',
         title: 'Project Manager',
       },
       {
@@ -44,11 +44,11 @@ const parsedResumeResponses: ParsedResume[] = [
       {
         dates: ['March 2007'],
         location: 'New York, New York',
-        organization: 'Employment History',
-        title: 'Project Manager',
+        organization: 'Coders',
+        title: 'Software Developer',
       },
     ],
-    name: 'Jacky Smith',
+    name: 'Anamay Saxena',
     phone: '890-555-0401',
     skills: [
       'Forecasting',
