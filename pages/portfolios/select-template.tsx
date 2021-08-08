@@ -27,7 +27,7 @@ const SelectTemplate = () => {
     if (!loading && !!!session?.user) {
       router.push('/users/login')
     }
-  }, [])
+  }, [loading, session])
 
   useEffect(() => {
     if (theme == themes.dark && data?.darkVibrant) {

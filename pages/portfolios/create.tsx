@@ -16,7 +16,7 @@ const PortfolioCreate = () => {
     if (!loading && !!!session?.user) {
       router.push('/users/login')
     }
-  }, [])
+  }, [loading, session])
 
   if (!!session?.user)
     return (
